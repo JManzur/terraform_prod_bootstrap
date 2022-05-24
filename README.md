@@ -38,6 +38,29 @@ Located in the root directory, make the necessary changes in the variables.tf fi
 terraform apply
 ```
 
+## S3 Backend - Example Configuration
+
+After deploying the S3 bucket and DynamoDB table, you can use them in another terraform project as the S3 backend as follows:
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+
+  backend "s3" {
+    bucket         = "tfbootstrap-5242022"
+    key            = "global/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "tfbootstrap-5242022"
+    encrypt        = true
+  }
+}
+```
+
 ## Author:
 
 - [@JManzur](https://jmanzur.com)
