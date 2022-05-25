@@ -54,8 +54,9 @@ terraform {
   backend "s3" {
     bucket         = "tfbootstrap-5242022"
     key            = "global/terraform.tfstate"
-    region         = "us-east-1"
     dynamodb_table = "tfbootstrap-5242022"
+    region         = "us-east-1"
+    profile        = "default"
     encrypt        = true
   }
 }
